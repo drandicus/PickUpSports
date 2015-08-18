@@ -1,0 +1,26 @@
+extends layout
+
+block content
+	.row
+		.col-md-6
+			h2 Login
+			label#loginError.hidden
+			form(name='login', action='/api/login', method='POST')
+				input#loginEmail.form-control(type='text', placeholder='Email')
+				input#loginPassword.form-control(type='password', placeholder="Password")
+				br
+				input#loginButton.btn.btn-default(type='Submit' value='Login')
+
+		.col-md-6
+			h2 Register
+			label#registerError.hidden
+			form(name='register', action='/api/register', method='POST')
+				input#registerFirstName.form-control(type='text', placeholder='First Name')
+				input#registerLastName.form-control(type='text', placeholder='Last Name')
+				input#registerEmail.form-control(type='text', placeholder='Email')
+				input#registerPassword.form-control(type='password', placeholder='Password')
+				input#registerConfirmPassword.form-control(type='password', placeholder='Confirm Password')
+				br
+				input#registerButton.btn.btn-default(type='Submit' value='Register')
+
+	script(type='text/javascript', src='/javascripts/login.js')

@@ -13,13 +13,6 @@ var isAuthenticated = function (req, res, next) {
 
 module.exports = function(passport){
 
-	/* Handle Login POST */
-	router.post('/login', passport.authenticate('login', {
-		successRedirect: '/home',
-		failureRedirect: '/',
-		failureFlash : true  
-	}));
-
 	/* Handle Registration POST */
 	router.post('/register', passport.authenticate('signup', {
 		successRedirect: '/home',
@@ -27,11 +20,14 @@ module.exports = function(passport){
 		failureFlash : true  
 	}));
 
-	/* Handle Logout */
-	router.get('/signout', function(req, res) {
-		req.logout();
-		res.redirect('/');
-	});
+	router.get('/login', function(req, res){
+		res.send({msg: "WTF"});
+	})
+	router.post('/login', passport.authenticate('login', {
+		successRedirect: '/home',
+		failureRedirect: '/',
+		failureFlash: true
+	}));
 
 	return router;
 }

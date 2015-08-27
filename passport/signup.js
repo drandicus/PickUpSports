@@ -4,6 +4,11 @@ var bCrypt = require('bcrypt-nodejs');
 
 module.exports = function(passport){
 
+    /*
+        Based on the PassportJS tutorial
+        Creates a new local strategy and named 'signup' to
+        create a new user and log him in
+    */
 	passport.use('signup', new LocalStrategy({
             passReqToCallback : true // allows us to pass back the entire request to the callback
         },
@@ -11,30 +16,26 @@ module.exports = function(passport){
 
             findOrCreateUser = function(){
 
-                // find a user in Mongo with provided username
                 User.findOne({ 'email' :  username }, function(err, user) {
-                    // In case of any error, return using the done method
+
                     if (err){
                         console.log('Error in SignUp: '+err);
                         return done(err);
                     }
-                    // already exists
+                    
                     if (user) {
-                        console.log('User already exists with username: '+ username);
+                        console.log('User already exists with email: '+ username);
                         return done(null, false, req.flash('message','User Already Exists'));
                     } else {
-                        // if there is no user with that email
-                        // create the user
+
                         var newUser = new User();
 
-                        // set the user's local credentials
+
                         newUser.email = username;
                         newUser.password = createHash(password);
-                        newUser.email = req.param('email');
                         newUser.firstName = req.param('firstname');
-                        newUser.lastName = req.param('lastname');
+                        newUser.lastName = req.param('lastname'); 
 
-                        // save the user
                         newUser.save(function(err) {
                             if (err){
                                 console.log('Error in Saving user: '+err);  
@@ -46,8 +47,6 @@ module.exports = function(passport){
                     }
                 });
             };
-            // Delay the execution of findOrCreateUser and execute the method
-            // in the next tick of the event loop
             process.nextTick(findOrCreateUser);
         })
     );

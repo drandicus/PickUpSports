@@ -1,20 +1,17 @@
 var express = require('express');
 var router = express.Router();
 
+
+/*
+	Method to ensure that the user can only access
+	the pages if they are authenticated -- Uses PassportJS
+*/
 var isAuthenticated = function (req, res, next) {
-	// if user is authenticated in the session, call the next() to call the next request handler 
-	// Passport adds this method to request object. A middleware is allowed to add properties to
-	// request and response objects
 	if (req.isAuthenticated()){
-		console.log("Is authenticated");
 		return next();
 	} else{
-		// if the user is not authenticated then redirect him to the login page
-		console.log("Not Authenticated");
 		res.redirect('/');
 	}
-		
-	
 }
 
 module.exports = function(passport){
@@ -35,6 +32,21 @@ module.exports = function(passport){
 		req.logout();
 		res.redirect('/');
 	});
+
+	/* Following 2 Methods for User Testing */
+	router.get('/userlist', function(req, res){
+		var User = require('./models/user');
+		User.find({}, function(err, userlist){
+			res.json(userlist);
+		})	
+	})
+
+	router.get('/reset', function(req, res){
+		var User = require('./models/user');
+		User.find({}).remove(function(err, product){
+			res.send({msg: 'ALL DELETED'});
+		})
+	})
 
 	return router;
 }

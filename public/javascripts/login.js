@@ -6,6 +6,17 @@ $(document).ready(function(){
 
 function login(e){
 	e.preventDefault();
+
+	var email = $('#loginEmail').val(),
+		password = $('#loginPassword').val();
+
+	if((email === "") || (password === "")){
+		$('#loginError').text('Please Fill in all the text fields');
+		$('#loginError').attr('class', 'error');
+		return;
+	}
+
+	$('#login').submit();
 }
 
 function register(e){
@@ -29,17 +40,5 @@ function register(e){
 		return;
 	}
 
-	var newUser = {
-		'firstname': firstname,
-		'lastname': lastname,
-		'email': email,
-		'password': password
-	}
-
-	$.ajax({
-		type:"POST",
-		data: newUser,
-		url:'/api/register',
-		dataType: 'JSON'
-	})
+	$('#register').submit();
 }

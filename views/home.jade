@@ -1,4 +1,19 @@
-extends layout
+extends postlogin-layout
 
 block content
-	h1 HOLY SHIT IT WORKS
+	.navbar.navbar-fixed-top.navbar-inverse
+		.navbar-container.col-md-12
+			.col-md-1
+				.list
+					img#list(src="/images/list.svg" width='50' height='50')
+			.col-md-6
+				.input-maps
+					input#autocomplete.form-control(type='text', placeholder='Enter Search Location')
+			.col-md-2
+				.filter-btn
+					button#filter.btn.btn-transparent Filter
+	.post-navbar-container
+		#map
+
+	script(src="https://maps.googleapis.com/maps/api/js?signed_in=true&libraries=places")
+	script(type='text/javascript', src='/javascripts/home.js')

@@ -1,6 +1,8 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color:#4F6373;
+  color:white;
 }
 
 a {
@@ -9,4 +11,136 @@ a {
 
 .error{
 	color:red;
+}
+
+.sidebar{
+	position:absolute;
+	top:0%;
+	left:0%;
+	height:100%;
+	width:300px;
+	background-color:#14212B;
+	z-index:1040;
+	color:white;
+}
+
+.sidebar:hover{
+	-webkit-box-shadow: 2px 2px 25px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 2px 2px 25px 0px rgba(0,0,0,0.75);
+	box-shadow: 2px 2px 25px 0px rgba(0,0,0,0.75); 
+}
+
+
+.navbar-inverse{
+	background-color:transparent;
+	border:none;
+	min-height:75px;
+	z-index:10;
+	transition: 0.5s;
+}
+
+.navbar-inverse:hover{
+	-webkit-box-shadow: 2px 2px 25px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 2px 2px 25px 0px rgba(0,0,0,0.75);
+	box-shadow: 2px 2px 25px 0px rgba(0,0,0,0.75);
+	background-color:#293845;
+}
+
+.navbar-inverse div{
+	display:inline-block;
+}
+
+.navbar-container{
+	position:absolute;
+	left:300px;
+}
+
+.list{
+	position:relative;
+	width:50px;
+	height:50px;
+	margin-top:12px;
+	margin-left:25px;
+}
+
+.input-maps{
+	position:relative;
+	width:100%;
+	margin-top:25px;
+}
+
+#movemaps{
+	width:100%;
+}
+
+.filter-btn{
+	position:relative;
+	margin-top:25px;
+}
+
+.btn-transparent{
+	background-color:transparent;
+	border:1px solid white;
+}
+
+.sidebar-container ul{
+	list-style-type: none;
+	margin-top:20px;
+	padding-left: 0px;
+}
+
+.sidebar-container ul li{
+	width:100%;
+	border-top:1px solid black;
+	padding:15px;
+	cursor:pointer;
+}
+
+.sidebar-container ul li:active{
+	background-color:#293845;
+}
+
+.sidebar-container ul li:last-child{
+	border-bottom: 1px solid black;
+}
+
+.container{
+	position:absolute;
+	top:0%;
+	left:285px;
+}
+
+.id-pic{
+	width:75px;
+	height:75px;
+	background-color:white;
+	border-radius:50%;
+	display:inline-block;
+	margin-left:25px;
+	margin-top:25px;
+}
+
+.info{
+	position:absolute;
+	width: 175px;
+	left:100px;
+	top:40px;
+	height:70px;
+	display:inline-block;
+
+}
+
+.username{
+	font-weight: bold;
+	font-family: Copperplate,"Copperplate Gothic Light",fantasy;
+	font-size:1.6em;
+}
+
+.post-navbar-container{
+	margin-top:75px;
+	height:800px;
+}
+
+#map{
+	height:100%;
 }

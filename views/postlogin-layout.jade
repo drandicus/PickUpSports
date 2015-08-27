@@ -1,0 +1,27 @@
+doctype html
+html
+	head
+		title= title
+		script(type='text/javascript', src='/bower_components/jquery/dist/jquery.min.js')
+		script(type='text/javascript', src='/javascripts/global.js')
+		link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.css')
+		link(rel='stylesheet', href='/stylesheets/style.css')
+	body
+		
+		.sidebar
+			.sidebar-container
+				.row
+					.id-pic
+					.info
+						div.username #{user.firstName} #{user.lastName}
+						div.useremail <i>#{user.email}</i>
+				ul
+					li Add Game
+					li My Games
+					li My Profile
+					li History
+					li Settings
+
+
+		.container
+			block content

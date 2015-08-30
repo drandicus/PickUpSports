@@ -1,24 +1,21 @@
-var map;
-
-
-var options = {
-	enableHighAccuracy: true,
-  	timeout: 5000,
-  	maximumAge: 0
+//Global Variable
+var home_global = {
+	map: null,
+	options: {
+		enableHighAccuracy: true,
+	  	timeout: 5000,
+	  	maximumAge: 0
+	},
+	my_location:{
+		latitude: 40.1150,
+		longitude: 88.2728
+	}
 }
-/*
-var location = {
-	latitude: 40.1150,
-	longitude: 88.2728
-};*/
 
-
-/*
 function geoSuccess(pos){
 	var crds = pos.coords;
-	console.log(crds);
-	/*
-	location = crds;
+	
+	home_global.my_location = crds;
 	map = new google.maps.Map(document.getElementById('map'), {
 		center: {lat: crds.latitude, lng: crds.longitude},
 		zoom: 15
@@ -26,23 +23,18 @@ function geoSuccess(pos){
 }
 
 function geoFailure(pos){
-	//map = new google.maps.Map(document.getElementById('map'), {center: {lat: -34.397, lng: 150.644},zoom: 8});
-}*/
+	map = new google.maps.Map(document.getElementById('map'), {center: {lat: -34.397, lng: 150.644},zoom: 8});
+}
 
 function initMap(){
-	//navigator.geolocation.getCurrentPosition(geoSuccess, geoFailure, options);
-	map = new google.maps.Map(document.getElementById('map'), {
-		center: {
-			lat: 40.1150, 
-			lng: -88.2728
-		},
-		zoom: 14
-	});
+	if(navigator.geolocation){
+		navigator.geolocation.getCurrentPosition(geoSuccess, geoFailure, home_global.options);
+	} else {
+		geoFailure(null);
+	}
 }
 
-function getMarkers(){
-
-}
+//function getMarkers(){}
 
 function initAutocomplete(){
 
